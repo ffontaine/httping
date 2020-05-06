@@ -209,6 +209,7 @@ int connect_ssl(const int fd, SSL_CTX *const client_ctx, SSL **const ssl_h, BIO 
 	}
 
 	*ssl_h = SSL_new(client_ctx);
+	SSL_set_tlsext_host_name(*ssl_h, hostname);
 
 	X509_VERIFY_PARAM *param = SSL_get0_param(*ssl_h);
 	X509_VERIFY_PARAM_set1_host(param, hostname, 0);
