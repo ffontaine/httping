@@ -36,7 +36,6 @@ DEBUG=yes
 WFLAGS=-Wall -W -Wextra -pedantic -D_FORTIFY_SOURCE=2
 OFLAGS=
 CFLAGS+=$(WFLAGS) $(OFLAGS) -DVERSION=\"$(VERSION)\" -DLOCALEDIR=\"$(LOCALEDIR)\"
-LDFLAGS+=-lm
 
 PACKAGE=$(TARGET)-$(VERSION)
 PREFIX?=/usr
@@ -98,6 +97,8 @@ endif
 ifeq ($(ARM),yes)
 CC=arm-linux-gcc
 endif
+
+LDFLAGS+=-lm
 
 all: $(TARGET) $(TRANSLATIONS)
 
